@@ -1,42 +1,44 @@
-# 04 Web APIs: Code Quiz
+# 03 JavaScript: Password Generator
 
 ## Your Task
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+This week’s homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
 
-To help familiarize you with these tests and allow you to use the skills covered in this unit, this week’s homework invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
-
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
+The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
 
 ## User Story
 
 ```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+AS AN employee with access to sensitive data
+I WANT to randomly generate a password that meets certain criteria
+SO THAT I can create a strong password that provides greater security
 ```
 
 ## Acceptance Criteria
 
 ```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
+GIVEN I need a new, secure password
+WHEN I click the button to generate a password
+THEN I am presented with a series of prompts for password criteria
+WHEN prompted for password criteria
+THEN I select which criteria to include in the password
+WHEN prompted for the length of the password
+THEN I choose a length of at least 8 characters and no more than 128 characters
+WHEN prompted for character types to include in the password
+THEN I choose lowercase, uppercase, numeric, and/or special characters
+WHEN I answer each prompt
+THEN my input should be validated and at least one character type should be selected
+WHEN all prompts are answered
+THEN a password is generated that matches the selected criteria
+WHEN the password is generated
+THEN the password is either displayed in an alert or written to the page
 ```
 
 ## Mock-Up
 
-The following animation demonstrates the application functionality:
+The following image shows the web application's appearance and functionality:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
 
 ## Grading Requirements
 
@@ -44,7 +46,9 @@ This homework is graded based on the following criteria:
 
 ### Technical Acceptance Criteria: 40%
 
-* Satisfies all of the preceding acceptance criteria.
+* Satisfies all of the preceding acceptance criteria plus the following:
+
+  * The homework should not produce any errors in the console when you inspect it using Chrome DevTools.
 
 ### Deployment: 32%
 
@@ -54,7 +58,7 @@ This homework is graded based on the following criteria:
 
 * Application GitHub URL submitted.
 
-* GitHub repository contains application code.
+* GitHub repository that contains application code.
 
 ### Application Quality: 15%
 
@@ -78,12 +82,11 @@ This homework is graded based on the following criteria:
 
 ## Review
 
-You are required to submit BOTH of the following for review:
+You are required to submit the following for review:
 
-* The URL of the functional, deployed application.
+* The URL of the deployed application.
 
 * The URL of the GitHub repository, with a unique name and a readme describing the project.
 
----
-
+- - -
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
