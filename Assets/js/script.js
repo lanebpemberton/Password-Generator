@@ -6,17 +6,13 @@ function generatePassword()
   var passLength = promptPasswordLength();
   if (passLength != null)
   {
-    var 
+    resetCharacterTypePreferences();
+    getUserCharacterTypePreferences();
+    
   }else
   {
     return null;
   }
-}
-
-var characterTypeArray = [];
-function returnCharacterType()
-{
-
 }
 
 function promptPasswordLength()
@@ -50,6 +46,68 @@ function promptPasswordLength()
     //exit out of function recursion because user has selected cancel
     return null;
   }
+}
+
+function resetCharacterTypePreferences()
+{
+  for(var a in characterTypeObj)
+  {
+    characterTypeObj[a].userSelected = false;
+  }
+}
+
+function getUserCharacterTypePreferences()
+{
+  //setup variable that counts number of preferences from user
+  var count = 0;
+  //loop through char type object
+  for(var a in characterTypeObj)
+  {
+    var shouldCharacterType = returnCharacterTypeFromUser(a);
+    characterTypeObj[a].userSelected = shouldCharacterType;
+    if (shouldCharacterType)
+    {
+      count++;
+    }
+  }
+  if (count<1)
+  {
+    alert("At least one character type must be selected");
+    getUserCharacterTypePreferences();  
+  }
+}
+
+var characterTypeObj = {
+  lowercase:
+  {
+    userSelected:false,
+    possibleChars:["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+  },
+  uppercase:
+  {
+    userSelected:false,
+    possibleChars:["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+  },
+  numeric:
+  {
+    userSelected: false,
+    possibleChars: ["0","1","2","3","4","5","6","7","8","9"],
+  },
+  special:
+  {
+    userSelected: false,
+    possibleChars: [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"],
+  }
+}
+
+function returnCharacterTypeFromUser(characterTypeLabel)
+{
+  var shouldCharacterType = confirm("Do you want " + characterTypeLabel + " characters in your password?")
+  if (shouldCharacterType)
+  {
+    return true;
+  }
+    return false;
 }
 
 // Write password to the #password input
