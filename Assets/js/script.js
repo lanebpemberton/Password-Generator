@@ -6,11 +6,17 @@ function generatePassword()
   var passLength = promptPasswordLength();
   if (passLength != null)
   {
-    
+    var 
   }else
   {
     return null;
   }
+}
+
+var characterTypeArray = [];
+function returnCharacterType()
+{
+
 }
 
 function promptPasswordLength()
