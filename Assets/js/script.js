@@ -6,9 +6,17 @@ function generatePassword()
   var passLength = promptPasswordLength();
   if (passLength != null)
   {
-    resetCharacterTypePreferences();
-    getUserCharacterTypePreferences();
-    
+    //ask user for their preference in character types
+    var characterTypes = getUserCharacterTypePreferences();
+    //loop until passLength
+    for(var a = 0;a<passLength;a++)
+    {
+      //on each loop randomly pull from one of the character arrays
+      if (characterTypes.length>1)
+      {
+        
+      }
+    }
   }else
   {
     return null;
@@ -48,25 +56,19 @@ function promptPasswordLength()
   }
 }
 
-function resetCharacterTypePreferences()
-{
-  for(var a in characterTypeObj)
-  {
-    characterTypeObj[a].userSelected = false;
-  }
-}
-
 function getUserCharacterTypePreferences()
 {
   //setup variable that counts number of preferences from user
   var count = 0;
+  //reset global array of character types
+  var characterTypes = [];
   //loop through char type object
   for(var a in characterTypeObj)
   {
     var shouldCharacterType = returnCharacterTypeFromUser(a);
-    characterTypeObj[a].userSelected = shouldCharacterType;
     if (shouldCharacterType)
     {
+      characterTypes.push(characterTypeObj[a].possibleChars)
       count++;
     }
   }
@@ -75,27 +77,24 @@ function getUserCharacterTypePreferences()
     alert("At least one character type must be selected");
     getUserCharacterTypePreferences();  
   }
+  return characterTypes;
 }
 
 var characterTypeObj = {
   lowercase:
   {
-    userSelected:false,
     possibleChars:["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
   },
   uppercase:
   {
-    userSelected:false,
     possibleChars:["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
   },
   numeric:
   {
-    userSelected: false,
     possibleChars: ["0","1","2","3","4","5","6","7","8","9"],
   },
   special:
   {
-    userSelected: false,
     possibleChars: [" ","!","\"","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~"],
   }
 }
